@@ -27,7 +27,7 @@ bool Time::operator<(const Time &other) const
     else if (hours == other.getHours()) {
         if (minutes < other.getMinutes()) return true;
     }
-    else return false;
+    return false;
 }
 
 // Overload the > operator
@@ -37,17 +37,18 @@ bool Time::operator>(const Time &other) const
     else if (hours == other.getHours()) {
         if (minutes > other.getMinutes()) return true;
     }
-    else return false;
+    return false;
 }
 
 // Overload the == operator
 bool Time::operator==(const Time &other) const
 {
-    return (this->hours == other.getHours()) && (this->minutes == other.getMinutes());
+    return (hours == other.hours) && (minutes == other.minutes);
 }
 
 // Overload the friend function operator<<
 ostream &operator<<(ostream &os, const Time &tm)
 {
-    return os << tm.getHours() << ":" << tm.getMinutes();
+    os << tm.getHours() << ":" << tm.getMinutes();
+    return os;
 }
